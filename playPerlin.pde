@@ -53,7 +53,7 @@ void draw() {
   }
 
   par2 += 0.00*(par2next-par2); //the value we're going through the perlin noise with
-
+  beginShape(LINES);
   for (int x=-3; x < width; x+=resolution) {
     for (int y=6; y < height; y += resolution) {
     float noiseVal = noise((par1+x)*noiseScale, par2*noiseScale, y*noiseScale);
@@ -65,13 +65,14 @@ void draw() {
     translate(translate, translate,translate);    
     strokeWeight(pow(2/noiseVal*1.6,1.17));    
     point(0,0,0);
-    popMatrix();
+    vertex(0,0,0);
     float pointSize = 15.01;       
     }    
   }
+  endShape();
   if (save) saveFrame();  
 }
 
 void keyPressed() {
   if (key == 'r') save = !save;
-}
+   }
